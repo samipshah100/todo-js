@@ -38,20 +38,26 @@ function removeItem(nodeId){
   let containerId =  "li" + id
   let checkboxID = "checkbox" + id
   let item = document.getElementById(containerId)
-  itemTotal--
-  itemCountSpan.innerHTML = itemTotal
+  
+  if (confirm("Do you want to delete that item?"))  {
+    
+    itemTotal--
+    itemCountSpan.innerHTML = itemTotal
+  
+    // if the checkbox for this item is unchecked, then unchecked 
+    //count will --. else if it was checked then unchecked count remains same.
+    checkboxElement = document.getElementById("checkbox" + id)
+    if (checkboxElement.checked === false) {
+      uncheckedTotal--
+      uncheckedCountSpan.innerHTML = uncheckedTotal
+    }
 
-  // if the checkbox for this item is unchecked, then unchecked 
-  //count will --. else if it was checked then unchecked count remains same.
-  checkboxElement = document.getElementById("checkbox" + id)
-  if (checkboxElement.checked === false) {
-    uncheckedTotal--
-    uncheckedCountSpan.innerHTML = uncheckedTotal
+    fadeOutEffect("delete")
+    item.remove()
   }
 
-  fadeOutEffect("delete")
-  item.remove()
 }
+
 
 function fadeOutEffect(action)  {
   
@@ -180,7 +186,7 @@ function newTodo() {
     onClick: "removeItem(this.id)"
   }
   addItem(todoContainerObj.id,"input",deleteBtnObj,deleteBtnContent)
-
+  
   // add todo-text of type span
   todoTextContent = item.text
   todoTextObj = {
