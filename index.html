@@ -16,11 +16,12 @@
       <center><h3> Add Todo Here: </h3></center>
       <input name = "new-item" id = "todo-input" placeholder="Add item, press <Enter> ... repeat" required> </input>
       <button hidden id="btn" class="button center" onClick="newTodo()">New TODO</button>
-      <div id="successContainer" style="font-size: 22px;  margin: auto; width:20%; height: 24px; display:block;text-align:center;position:relative;">
-      <div id="successMessage" style = "color: green; margin-top: 10px; display:none; position:absolute; ">New to-do item added!</div>
+      <div id="successContainer">
+      <div id="successMessage" style = "color: green; margin-top: 10px; display:none; position:absolute; ">New to-do item added!
+      </div>
       </div>
 
-      <ul id="todo-list" class="todo-list">TODO List here</ul>
+      <ul id="todo-list" class="list-group"></ul>
       <!-- <div id="samlist"> samlist sam
 
       </div> -->

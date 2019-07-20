@@ -40,7 +40,8 @@ function removeItem(nodeId){
   itemTotal--
   itemCountSpan.innerHTML = itemTotal
 
-  // if the checkbox for this item is unchecked, then unchecked count will --. else if it was checked then unchecked count remains same.
+  // if the checkbox for this item is unchecked, then unchecked 
+  //count will --. else if it was checked then unchecked count remains same.
   checkboxElement = document.getElementById("checkbox" + id)
   if (checkboxElement.checked === false) {
     uncheckedTotal--
@@ -111,16 +112,37 @@ function newTodo() {
 
   //display newlist as li. use itemtotal to keep track
 
-
-
   // add li todo-container of type li
+  //create todoContainerObj first 
   todoContainerText =""
   // todoContainerId
   todoContainerObj = {
-    "class":"todo-container",
+    "class":"list-group-item",
     "id": "li"+counter,
   }
   addItem("todo-list", "li", todoContainerObj,todoContainerText)
+
+  // add delete btn of type input
+  deleteBtnContent = ""
+  deleteBtnObj = {
+    "type": "image",
+    "id": "delete" + counter,
+    "name": "delete-btn",
+    "src": "./a.png",
+    class: "todo-delete",
+    title: "Delete this item",
+    style: "margin-left:50px; height:25px; width:25px;",
+    onClick: "removeItem(this.id)"
+  }
+  addItem(todoContainerObj.id,"input",deleteBtnObj,deleteBtnContent)
+
+  // add todo-text of type span
+  todoTextContent = item.text
+  todoTextObj = {
+    "class": "todo-text",
+    "id": "text" + counter,
+  }
+  addItem(todoContainerObj.id,"div",todoTextObj,todoTextContent)
 
   // add checkbox of type input
   checkboxText=""
@@ -131,41 +153,10 @@ function newTodo() {
   }
   addItem(todoContainerObj.id,"input",checkboxObj,checkboxText)
 
-  // add todo-text of type span
-  todoTextContent = item.text
-  todoTextObj = {
-    "class": "todo-text",
-    "id": "text" + counter,
-  }
-  addItem(todoContainerObj.id,"span",todoTextObj,todoTextContent)
-
-  // add delete btn of type input
-  deleteBtnContent = ""
-  deleteBtnObj = {
-    "type": "image",
-    "id": "delete" + counter,
-    "name": "delete-btn",
-    "src": "./a.png",
-    title: "Delete this item",
-    style: "margin-left:50px; height:25px; width:25px;",
-    onClick: "removeItem(this.id)"
-  }
-  addItem(todoContainerObj.id,"input",deleteBtnObj,deleteBtnContent)
-
   // removeItem(document.getElementById('samlist'))
-
-
 
   // counter for naming
   counter++
-
-  // let todoListText="<li class='todo-container' id='\
-  // " + itemTotal +"'>  <input type='checkbox' class='todo-checkbox'>\
-  // </input>\
-  // <span class='todo-text'>"  + item.text +   "</span>\
-  // <input type='image' name='delete-btn' src=''./a.png'\ alt='Delete this item!' title='Delete this item!'\ style='height:25px;width:25px;'>\
-  // </li>"
-
 
   let fadeTarget = document.getElementById('successMessage')
 
