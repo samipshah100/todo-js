@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+
+  </head>
+  <body>
+    <div class="container center">
+      <h1 class="center title">My TODO App</h1>
+      <div class="flow-right controls">
+        <span>Item count: <span id="item-count">0</span></span>
+        <span>Unchecked count: <span id="unchecked-count">0</span></span>
+      </div><br>
+      <center><h3> Add Todo Here: </h3></center>
+      <input name = "new-item" id = "todo-input" placeholder="Add item, press <Enter> ... repeat" required> </input>
+      <button hidden id="btn" class="button center" onClick="newTodo()">New TODO</button>
+      <div id="successContainer" style="font-size: 22px;  margin: auto; width:20%; height: 24px; display:block;text-align:center;position:relative;">
+      <div id="successMessage" style = "color: green; margin-top: 10px; display:none; position:absolute; ">New to-do item added!</div>
+      </div>
+
+      <ul id="todo-list" class="todo-list">TODO List here</ul>
+      <!-- <div id="samlist"> samlist sam
+
+      </div> -->
+    </div>
+    <!-- Test of delete image -->
+    <!-- <input type="image" name="delete-btn" src="./a.png" alt="Delete this item!" title="Delete this item!" style="height:25px;width:25px;"> -->
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
+</html>
