@@ -16,9 +16,17 @@
       <center><h3> Add Todo Here: </h3></center>
       <input name = "new-item" id = "todo-input" placeholder="Add item, press <Enter> ... repeat" required> </input>
       <button hidden id="btn" class="button center" onClick="newTodo()">New TODO</button>
-      <div id="successContainer">
-      <div id="successMessage" style = "color: green; margin-top: 10px; display:none; position:absolute; ">New to-do item added!
-      </div>
+      <div id = "fadeContainer">
+        <div id="successContainer">
+          <div id="successMessage">
+            New to-do item added!
+          </div>
+        </div>
+        <div id="deleteContainer">
+          <div id="deleteMessage">
+              Item deleted!
+            </div>
+        </div>
       </div>
 
       <ul id="todo-list" class="list-group"></ul>

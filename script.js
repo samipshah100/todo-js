@@ -32,6 +32,7 @@ function addItem(parentId, elementTag, propertiesObj, htmlText )  {
 }
 
 function removeItem(nodeId){
+  //  get digits from the tag name
   var id = nodeId.replace(/[^0-9]/g,'');
   // alert(id)
   let containerId =  "li" + id
@@ -47,7 +48,44 @@ function removeItem(nodeId){
     uncheckedTotal--
     uncheckedCountSpan.innerHTML = uncheckedTotal
   }
+
+  fadeOutEffect("delete")
   item.remove()
+}
+
+function fadeOutEffect(action)  {
+  
+  //init
+  let fadeTarget
+
+  if (action === "add") {
+    fadeTarget = document.getElementById('successContainer')
+  }
+  else if (action === "delete") {
+    fadeTarget = document.getElementById('deleteContainer')
+  }
+  
+  fadeTarget.style.opacity = 0
+
+  let fadeEffect = setInterval( function()  {
+    // if ( fadeTarget.style.opacity < 0.1)  {
+    //   fadeTarget.style.opacity = 1
+    //   // alert("opac")
+    //   // fadeTarget.style.display = "block"
+    // }
+
+    if (fadeTarget.style.display === "none" || fadeTarget.style.display === "") {
+      fadeTarget.style.display = "block"
+      fadeTarget.style.opacity = 1
+    }
+    if (fadeTarget.style.opacity > 0) {
+      fadeTarget.style.opacity -= 0.1
+    }
+    else {
+      clearInterval(fadeEffect)
+      fadeTarget.style.display = "none"
+    }
+  }, 300) // multiply by 10 to get fade out time in miliseconds.
 }
 
 function sanitarize(string) {
@@ -103,7 +141,14 @@ function newTodo() {
   let sanitized_input = sanitarize(document.getElementById('todo-input').value)
   const item = {text: sanitized_input, checked: false }
   newList.push(item)
-  itemPushed = true
+  // itemCreated = true
+  // if (itemCreated)  {
+  //   fadeOutEffect()
+  //   itemCreated = false
+  // }
+  
+  fadeOutEffect("add")
+
   document.getElementById("todo-input").value=""
 
   // increase counts.
@@ -128,7 +173,7 @@ function newTodo() {
     "type": "image",
     "id": "delete" + counter,
     "name": "delete-btn",
-    "src": "./a.png",
+    "src": "./delete.png",
     class: "todo-delete",
     title: "Delete this item",
     style: "margin-left:50px; height:25px; width:25px;",
@@ -158,40 +203,6 @@ function newTodo() {
   // counter for naming
   counter++
 
-  let fadeTarget = document.getElementById('successMessage')
-
-  fadeTarget.style.opacity = 0
-
-  function fadeOutEffect()  {
-    let fadeEffect = setInterval( function()  {
-      // if ( fadeTarget.style.opacity < 0.1)  {
-      //   fadeTarget.style.opacity = 1
-      //   // alert("opac")
-      //   // fadeTarget.style.display = "block"
-      // }
-      if (fadeTarget.style.display === "none") {
-        fadeTarget.style.display = "block"
-        fadeTarget.style.opacity = 1
-      }
-      if (fadeTarget.style.opacity > 0) {
-        fadeTarget.style.opacity -= 0.1
-      }
-      else {
-        clearInterval(fadeEffect)
-        fadeTarget.style.display = "none"
-      }
-    }, 100)
-  }
-  if (itemPushed)  {
-    fadeOutEffect()
-    itemPushed = false
-  }
-
-  // document.getElementById('todo-list').innerHTML += todoListText
-
   uncheckedCountSpan.innerHTML = uncheckedTotal
   itemCountSpan.innerHTML = itemTotal
-  //alert(newList[0].checked)
-
-  //samlist.innerHTML =todoListText
 }

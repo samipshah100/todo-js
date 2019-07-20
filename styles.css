@@ -122,12 +122,46 @@ input:focus  {
   /* overflow-y: auto; */
 }
 
-#successContainer {
-  font-size: 22px;  
-  margin: auto; 
-  width:30px; 
-  height: 24px; 
-  display:none;
+#fadeContainer {
+  margin: 0 ;
+  padding: 0;
+  font-size: 20px;  
+  /* margin: auto;  */
+  align-self: center;
+  width:500px; 
+  height: 30px; 
   text-align:center;
-  position:relative;
+  /* position:relative; */
+}
+
+#successContainer, #deleteContainer {
+  display:none;
+  margin: 0 ;
+  padding: 0;
+  font-size: 20px;  
+  /* margin: auto;  */
+  align-self: center;
+  width:500px; 
+  height: 30px; 
+  /* display:none; */
+  text-align:center;
+  /* position:relative; */
+}
+
+#successMessage {
+  
+  color: green; 
+  align-self: center;
+  width:500px; 
+  height: 30px;
+  /* position:absolute; */
+}
+
+#deleteMessage {
+  
+  color: red; 
+  align-self: center;
+  width:500px; 
+  height: 30px;
+  /* position:absolute; */
 }
